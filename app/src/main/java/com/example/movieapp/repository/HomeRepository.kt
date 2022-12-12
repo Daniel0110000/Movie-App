@@ -4,7 +4,7 @@ import com.example.movieapp.data.models.MovieResponse
 import com.example.movieapp.data.network.ApiService
 import javax.inject.Inject
 
-class MovieRepository
+class HomeRepository
     @Inject
     constructor(
         private val apiService: ApiService

@@ -12,7 +12,7 @@ import com.example.movieapp.adapter.RecyclerMoviesAdapter
 import com.example.movieapp.constants.ApplicationConstants.TOTAL_PAGES
 import com.example.movieapp.data.models.TvShow
 import com.example.movieapp.databinding.FragmentHomeBinding
-import com.example.movieapp.viewModel.MovieViewModel
+import com.example.movieapp.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +21,7 @@ class Home : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
     private var movieList: ArrayList<TvShow> = arrayListOf()
     private lateinit var moviesAdapter: RecyclerMoviesAdapter
