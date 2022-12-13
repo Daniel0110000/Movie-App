@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Dark-->
-    <color name="dark_jungle">#252525</color>
 
-    <!--Light-->
-    <color name="ghost_white">#F8F9FF</color>
-
-
-    <!--Globals-->
-    <color name="cinder">#151515</color>
-    <color name="gainsboro">#DDDDDD</color>
+    <color name="mirage">#191A23</color>
+    <color name="baltic_sea">#242933</color>
+    <color name="sandstorm">#F4D03F</color>
     <color name="white">#FFFFFF</color>
-    <color name="dodger_blue">#5079FF</color>
-    <color name="fire_engine">#D91F27</color>
+    <color name="gainsboro">#DEDEDE</color>
+
 </resources>

@@ -2,16 +2,17 @@
     <!-- Base application theme. -->
     <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/ghost_white</item>
-        <item name="colorPrimaryVariant">@color/gainsboro</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="android:textColor">@color/cinder</item>
-        <item name="android:windowBackground">@color/ghost_white</item>
+        <item name="colorPrimary">@color/mirage</item>
+        <item name="colorPrimaryVariant">@color/baltic_sea</item>
+        <item name="colorOnPrimary">@color/sandstorm</item>
+        <item name="android:textColor">@color/gainsboro</item>
+        <item name="android:textColorHint">@color/gainsboro</item>
+        <item name="android:windowBackground">@color/mirage</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/dodger_blue</item>
-        <item name="colorSecondaryVariant">@color/cinder</item>
-        <item name="colorOnSecondary">@color/ghost_white</item>
+        <item name="colorSecondary">@color/sandstorm</item>
+        <item name="colorSecondaryVariant">@color/gainsboro</item>
+        <item name="colorOnSecondary">@color/baltic_sea</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 </resources>

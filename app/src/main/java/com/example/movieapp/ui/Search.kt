@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.adapter.RecyclerMoviesAdapter
@@ -41,7 +42,7 @@ class Search : Fragment() {
     private fun initRecyclerView(){
         viewModel.searchResult.observe(viewLifecycleOwner){ movies ->
             binding.recyclerSearch.hasFixedSize()
-            binding.recyclerSearch.layoutManager = LinearLayoutManager(context)
+            binding.recyclerSearch.layoutManager = GridLayoutManager(context, 2)
             moviesList.clear()
             if(movies != null){
                 if(movies.tv_shows.isNotEmpty()){

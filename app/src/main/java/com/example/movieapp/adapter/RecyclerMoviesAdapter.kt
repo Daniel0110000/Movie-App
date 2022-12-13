@@ -27,9 +27,6 @@ class RecyclerMoviesAdapter(private val moviesList: ArrayList<TvShow>): Recycler
 
         private val imageMovie: ImageView = itemView.findViewById(R.id.image_movie)
         private val movieName: TextView = itemView.findViewById(R.id.movie_name)
-        private val networkMovie: TextView = itemView.findViewById(R.id.network_movie)
-        private val startedMovie: TextView = itemView.findViewById(R.id.started_movie)
-        private val statusMovie: TextView = itemView.findViewById(R.id.status_movie)
 
         fun print(position: Int){
 
@@ -39,9 +36,6 @@ class RecyclerMoviesAdapter(private val moviesList: ArrayList<TvShow>): Recycler
                 .into(imageMovie)
 
             movieName.text = moviesList[position].name
-            networkMovie.text = "${moviesList[position].network} (${moviesList[position].country})"
-            startedMovie.text = "Started on: ${moviesList[position].start_date}"
-            statusMovie.text = moviesList[position].status
 
         }
     }
