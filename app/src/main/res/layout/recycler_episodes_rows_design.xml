@@ -35,16 +35,16 @@
 
             <TextView
                 android:id="@+id/episode_number"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:maxWidth="200dp"
                 android:maxLines="1"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="normal|bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Episodio 1" />
+                tools:text="Episodio 1 | Temporada 1" />
 
             <TextView
                 android:id="@+id/episode_name"
@@ -52,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginBottom="10dp"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/episode_number"
                 tools:text="An Innocent Man" />
@@ -63,7 +62,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textSize="15sp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/episode_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="2012/2/1" />

@@ -3,6 +3,7 @@ package com.example.movieapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
@@ -27,9 +28,13 @@ class RecyclerEpisodesAdapter(private val episodesList: ArrayList<Episode>): Rec
         private val episodeAirDate: TextView = itemView.findViewById(R.id.episode_air_date)
 
         fun print(position: Int){
-            episodeNumber.text = "Episode ${episodesList[position].episode}"
+            episodeNumber.text = "Episode ${episodesList[position].episode} | Season ${episodesList[position].season}"
             episodeName.text = episodesList[position].name
             episodeAirDate.text = episodesList[position].air_date
+
+            val animation = AnimationUtils.loadAnimation(itemView.context, android.R.anim.slide_in_left)
+            itemView.animation = animation
+
         }
 
     }

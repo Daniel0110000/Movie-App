@@ -11,7 +11,7 @@ import com.example.movieapp.R
 import com.example.movieapp.data.models.TvShow
 import com.squareup.picasso.Picasso
 
-class RecyclerMoviesAdapter(private val moviesList: ArrayList<TvShow>): RecyclerView.Adapter<RecyclerMoviesAdapter.ViewHolder>() {
+class RecyclerMoviesAdapter(private val moviesList: ArrayList<TvShow>, val listener: MovieClickListener): RecyclerView.Adapter<RecyclerMoviesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_rows_design, parent, false))
@@ -36,6 +36,11 @@ class RecyclerMoviesAdapter(private val moviesList: ArrayList<TvShow>): Recycler
                 .into(imageMovie)
 
             movieName.text = moviesList[position].name
+
+            itemView.setOnClickListener {
+                listener.onItemClick(moviesList[position].id)
+            }
+
 
         }
     }

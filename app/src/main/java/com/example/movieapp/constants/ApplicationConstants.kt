@@ -5,6 +5,7 @@ object ApplicationConstants {
     const val BASE_URL: String = "https://www.episodate.com/api/"
     const val ALL_URL: String = "most-popular"
     const val SEARCH_URL: String = "search"
+    const val SHOW_DETAILS_URL: String = "show-details"
     const val TOTAL_PAGES: Int = 1134
 
 }

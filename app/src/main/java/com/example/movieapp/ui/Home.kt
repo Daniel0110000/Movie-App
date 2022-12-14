@@ -1,5 +1,6 @@
 package com.example.movieapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapp.adapter.MovieClickListener
 import com.example.movieapp.adapter.RecyclerMoviesAdapter
 import com.example.movieapp.constants.ApplicationConstants.TOTAL_PAGES
 import com.example.movieapp.data.models.TvShow
@@ -17,7 +18,7 @@ import com.example.movieapp.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Home : Fragment() {
+class Home : Fragment(), MovieClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -43,7 +44,7 @@ class Home : Fragment() {
     }
 
     private fun initRecyclerView(){
-        moviesAdapter = RecyclerMoviesAdapter(movieList)
+        moviesAdapter = RecyclerMoviesAdapter(movieList, this)
         binding.recyclerAll.apply {
             hasFixedSize()
             layoutManager = GridLayoutManager(context, 2)
@@ -76,6 +77,12 @@ class Home : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onItemClick(id: Int) {
+        val showDetails = Intent(context, ShowDetails::class.java)
+        showDetails.putExtra("id", id)
+        startActivity(showDetails)
     }
 
 }

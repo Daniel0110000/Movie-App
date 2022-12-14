@@ -4,34 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C1117"
     android:scrollbars="none"
-    tools:context=".ui.MovieDescription">
+    tools:context=".ui.ShowDetails">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <ImageView
-            android:id="@+id/image_test"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/images_from_the_film"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@id/images_from_the_film"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/back_layout"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_back"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:focusable="true"
+            android:contentDescription="@string/back_layout" />
 
         <TextView
+            android:id="@+id/movie_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:maxWidth="220dp"
             android:maxLines="2"
-            android:text="Mr robots (2014)"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/image_test"
+            app:layout_constraintTop_toBottomOf="@id/images_from_the_film"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -45,9 +63,10 @@
             android:focusable="true"
             app:borderWidth="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_test"
+            app:layout_constraintTop_toBottomOf="@id/images_from_the_film"
             app:srcCompat="@drawable/ic_favorites"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            android:contentDescription="@string/favorite_movie" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/genres_layout"
@@ -56,45 +75,7 @@
             android:layout_margin="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/floatingActionButton2">
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Drama"
-                android:textColor="#F9B40E"
-                app:chipStrokeColor="#F9B40E"
-                app:chipStrokeWidth="1dp" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Action"
-                android:textColor="#F9B40E"
-                app:chipStrokeColor="#F9B40E"
-                app:chipStrokeWidth="1dp" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Suspen"
-                android:textColor="#F9B40E"
-                app:chipStrokeColor="#F9B40E"
-                app:chipStrokeWidth="1dp" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Science-Fiction"
-                android:textColor="#F9B40E"
-                app:chipStrokeColor="#F9B40E"
-                app:chipStrokeWidth="1dp" />
-
-        </com.google.android.material.chip.ChipGroup>
+            app:layout_constraintTop_toBottomOf="@id/movie_name"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/description_title_layout"
@@ -110,11 +91,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
+                android:paddingStart="17dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:textSize="18sp"
                 android:textStyle="normal|bold" />
 
@@ -133,10 +114,10 @@
             app:layout_constraintTop_toBottomOf="@id/description_title_layout">
 
             <TextView
+                android:id="@+id/movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Arrow is an American television series developed by writer/producers Greg Berlanti, Marc Guggenheim, and Andrew Kreisberg. It is based on the DC Comics character Green Arrow, a costumed crime-fighter created by Mort Weisinger and George Papp. It premiered in North America on The CW on October 10, 2012, with international broadcasting taking place in late 2012. Primarily filmed in Vancouver, British Columbia, Canada, the series follows billionaire playboy Oliver Queen, portrayed by Stephen Amell, who, five years after being stranded on a hostile island, returns home to fight crime and corruption as a secret vigilante whose weapon of choice is a bow and arrow. Unlike in the comic books, Queen does not go by the alias \Green Arrow\. The series takes a realistic look at the Green Arrow character, as well as other characters from the DC Comics universe. Although Oliver Queen/Green Arrow had been featured in the television series Smallville from 2006 to 2011, the producers decided to start clean and find a new actor (Amell) to portray the character. Arrow focuses on the humanity of Oliver Queen, and how he was changed by time spent shipwrecked on an island. Most episodes have flashback scenes to the five years in which Oliver was missing."
                 android:textSize="15sp" />
 
         </androidx.cardview.widget.CardView>
@@ -159,8 +140,8 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
-                android:text="Episodes"
-                android:textSize="20sp"
+                android:text="@string/episodes"
+                android:textSize="17sp"
                 android:textStyle="normal|bold" />
 
         </androidx.cardview.widget.CardView>
@@ -171,8 +152,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/episodes_title_layout"
-            tools:listitem="@layout/recycler_episodes_rows_design" />
+            app:layout_constraintTop_toBottomOf="@id/episodes_title_layout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,4 +6,8 @@
     <string name="movie_not_found">Movie not found</string>
     <string name="search_movie">Search Movie</string>
     <string name="image_movie">image movie</string>
+    <string name="episodes">Episodes</string>
+    <string name="back_layout">back layout</string>
+    <string name="favorite_movie">favorite movie</string>
+    <string name="description">Description</string>
 </resources>
