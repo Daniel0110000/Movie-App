@@ -18,12 +18,19 @@ class HomeViewModel
         private val homeRepository: HomeRepository
     ): ViewModel() {
 
+    private val oldData = MutableLiveData<MovieResponse?>()
+
     fun allMovies(page: Int): MutableLiveData<MovieResponse>{
         val movies = MutableLiveData<MovieResponse>()
         viewModelScope.launch(Dispatchers.IO) {
             val data = homeRepository.getAllMovies(page)
             withContext(Dispatchers.Main){
-                movies.value = data!!
+                if(data != oldData.value){
+                    movies.value = data!!
+                    oldData.value = data
+                }else{
+                    movies.value = movies.value
+                }
             }
         }
         return movies

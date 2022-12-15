@@ -27,6 +27,7 @@ class Home : Fragment(), MovieClickListener {
 
     private var movieList: ArrayList<TvShow> = arrayListOf()
     private lateinit var moviesAdapter: RecyclerMoviesAdapter
+
     private var currentPage: Int = 1
     private var oldCurrentPage: Int = 0
 
@@ -58,11 +59,8 @@ class Home : Fragment(), MovieClickListener {
                         if(currentPage <= TOTAL_PAGES){
                             currentPage += 1
                             if(currentPage != oldCurrentPage){
-                                println("Current page: $currentPage")
                                 getMovies()
                                 binding.secondaryProgressBar.visibility = View.VISIBLE
-                            }else{
-                                println("Repeticion cancelada")
                             }
                         }
                     }

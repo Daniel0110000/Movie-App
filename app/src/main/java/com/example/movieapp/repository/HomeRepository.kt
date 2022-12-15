@@ -10,13 +10,8 @@ class HomeRepository
         private val apiService: ApiService
     ){
 
-    suspend fun getAllMovies(page: Int): MovieResponse?{
-        return try {
-            val call = apiService.getAllMovies(page)
-            if(call.isSuccessful) call.body() else null
-        }catch (e: Exception){
-            e.printStackTrace()
-            null
-        }
-    }
+     suspend fun getAllMovies(page: Int): MovieResponse?{
+         val call = apiService.getAllMovies(page)
+         return if(call.isSuccessful) call.body() else null
+     }
 }

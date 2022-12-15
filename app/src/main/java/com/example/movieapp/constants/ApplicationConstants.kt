@@ -7,5 +7,4 @@ object ApplicationConstants {
     const val SEARCH_URL: String = "search"
     const val SHOW_DETAILS_URL: String = "show-details"
     const val TOTAL_PAGES: Int = 1134
-
 }
