@@ -28,6 +28,7 @@ class Home : Fragment(), MovieClickListener {
     private var movieList: ArrayList<TvShow> = arrayListOf()
     private lateinit var moviesAdapter: RecyclerMoviesAdapter
     private var currentPage: Int = 1
+    private var oldCurrentPage: Int = 0
 
 
     override fun onCreateView(
@@ -53,10 +54,16 @@ class Home : Fragment(), MovieClickListener {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     if(!binding.recyclerAll.canScrollVertically(1)){
+                        oldCurrentPage = currentPage
                         if(currentPage <= TOTAL_PAGES){
                             currentPage += 1
-                            getMovies()
-                            binding.secondaryProgressBar.visibility = View.VISIBLE
+                            if(currentPage != oldCurrentPage){
+                                println("Current page: $currentPage")
+                                getMovies()
+                                binding.secondaryProgressBar.visibility = View.VISIBLE
+                            }else{
+                                println("Repeticion cancelada")
+                            }
                         }
                     }
                 }

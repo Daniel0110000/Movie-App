@@ -12,4 +12,10 @@
     <string name="description">Description</string>
     <string name="icon_fav">❤️</string>
     <string name="no_favorite_movies">No favorite movies</string>
+    <string name="icon_search">🔎</string>
+    <string name="icon_not_found">🎭</string>
+    <string name="station">Station: </string>
+    <string name="status">Status: </string>
+    <string name="start">Start: </string>
+    <string name="show_description">Show description</string>
 </resources>

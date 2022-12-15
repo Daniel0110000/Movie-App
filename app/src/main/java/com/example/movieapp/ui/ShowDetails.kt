@@ -2,6 +2,7 @@ package com.example.movieapp.ui
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,8 @@ class ShowDetails : AppCompatActivity() {
     private val episodeList: ArrayList<Episode> = arrayListOf()
 
     private var isFavoriteMovie: Boolean = false
+
+    private var closeOpenDescription: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +66,9 @@ class ShowDetails : AppCompatActivity() {
                 initGenres(details.tvShow.genres)
                 binding.movieName.text = details.tvShow.name
                 binding.movieDescription.text = details.tvShow.description
+                binding.station.text = "${details.tvShow.network} (${details.tvShow.country})"
+                binding.status.text = details.tvShow.status
+                binding.startDate.text = details.tvShow.start_date
                 episodeList.addAll(details.tvShow.episodes)
                 initRecyclerViewEpisodes()
             }
@@ -71,8 +77,23 @@ class ShowDetails : AppCompatActivity() {
         binding.addFavoriteMovie.setOnClickListener {
             if(isFavoriteMovie){
                 viewModel.addFavoriteMovie()
+                Toast.makeText(this, "❤️ Movie added to favorites!", Toast.LENGTH_SHORT).show()
             }else{
                 viewModel.deleteFavoriteMovie()
+                Toast.makeText(this, "\uD83D\uDDD1 Movie removed from favorites!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.showDescription.setOnClickListener {
+            if(closeOpenDescription == 0){
+                openCrossFadeDescription()
+                binding.showDescription.text = "Close Description"
+                closeOpenDescription = 1
+            }else if(closeOpenDescription == 1){
+                binding.descriptionLayout.visibility = View.GONE
+                binding.descriptionTitleLayout.visibility = View.GONE
+                binding.showDescription.text = "Show Description"
+                closeOpenDescription = 0
             }
         }
 
@@ -103,5 +124,20 @@ class ShowDetails : AppCompatActivity() {
         }
     }
 
-
+    private fun openCrossFadeDescription(){
+        val contentDescription = binding.descriptionLayout
+        val contentTitleDescription = binding.descriptionTitleLayout
+        contentDescription.alpha = 0f
+        contentDescription.visibility = View.VISIBLE
+        contentDescription.animate()
+            .alpha(1f)
+            .setDuration(2000)
+            .setListener(null)
+        contentTitleDescription.alpha = 0F
+        contentTitleDescription.visibility = View.VISIBLE
+        contentTitleDescription.animate()
+            .alpha(1f)
+            .setDuration(2000)
+            .setListener(null)
+    }
 }

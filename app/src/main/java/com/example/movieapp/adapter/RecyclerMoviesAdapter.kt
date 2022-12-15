@@ -41,6 +41,8 @@ class RecyclerMoviesAdapter(private val moviesList: ArrayList<TvShow>, val liste
                 listener.onItemClick(moviesList[position].id)
             }
 
+            val animation = AnimationUtils.loadAnimation(itemView.context, android.R.anim.slide_in_left)
+            itemView.animation = animation
 
         }
     }

@@ -3,6 +3,7 @@ package com.example.movieapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +40,9 @@ class RecyclerFavoritesAdapter(private val favoritesList: List<Favorites>, priva
             itemView.setOnClickListener{
                 listener.onItemClick(favoritesList[position].movieId)
             }
+
+            val animation = AnimationUtils.loadAnimation(itemView.context, android.R.anim.slide_in_left)
+            itemView.animation = animation
 
         }
     }
