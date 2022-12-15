@@ -40,10 +40,6 @@ class RecyclerFavoritesAdapter(private val favoritesList: List<Favorites>, priva
             itemView.setOnClickListener{
                 listener.onItemClick(favoritesList[position].movieId)
             }
-
-            val animation = AnimationUtils.loadAnimation(itemView.context, android.R.anim.slide_in_left)
-            itemView.animation = animation
-
         }
     }
 
