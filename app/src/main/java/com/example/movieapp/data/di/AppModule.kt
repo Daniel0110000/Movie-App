@@ -1,10 +1,15 @@
 package com.example.movieapp.data.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.movieapp.constants.ApplicationConstants.BASE_URL
 import com.example.movieapp.data.network.ApiService
+import com.example.movieapp.data.room.FavoritesDao
+import com.example.movieapp.data.room.FavoritesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -34,4 +39,13 @@ object AppModule {
         .readTimeout(120, TimeUnit.SECONDS)
         .build()
 
+    @Provides
+    @Singleton
+    fun providerFavoritesDao(@ApplicationContext context: Context): FavoritesDao{
+        return Room.databaseBuilder(
+            context,
+            FavoritesDatabase::class.java,
+            "favorites_database"
+        ).allowMainThreadQueries().build().getFavoritesDao()
+    }
 }

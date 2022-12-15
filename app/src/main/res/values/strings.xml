@@ -10,4 +10,6 @@
     <string name="back_layout">back layout</string>
     <string name="favorite_movie">favorite movie</string>
     <string name="description">Description</string>
+    <string name="icon_fav">❤️</string>
+    <string name="no_favorite_movies">No favorite movies</string>
 </resources>

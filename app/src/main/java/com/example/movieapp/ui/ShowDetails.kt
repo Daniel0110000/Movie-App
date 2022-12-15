@@ -1,8 +1,8 @@
 package com.example.movieapp.ui
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +27,8 @@ class ShowDetails : AppCompatActivity() {
     private val imageList: ArrayList<String> = arrayListOf()
     private val episodeList: ArrayList<Episode> = arrayListOf()
 
+    private var isFavoriteMovie: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShowDetailsBinding.inflate(layoutInflater)
@@ -44,6 +46,15 @@ class ShowDetails : AppCompatActivity() {
             onBackPressed()
         }
 
+        viewModel.checkFavoriteMovie(movieId).observe(this){ favorites ->
+            isFavoriteMovie = if(favorites.isNotEmpty()){
+                binding.addFavoriteMovie.setImageResource(R.drawable.ic_favorite)
+                false
+            }else{
+                binding.addFavoriteMovie.setImageResource(R.drawable.ic_outline_favorite)
+                true
+            }
+        }
 
         viewModel.detailsByID(movieId).observe(this){ details ->
             if(details != null){
@@ -56,6 +67,15 @@ class ShowDetails : AppCompatActivity() {
                 initRecyclerViewEpisodes()
             }
         }
+
+        binding.addFavoriteMovie.setOnClickListener {
+            if(isFavoriteMovie){
+                viewModel.addFavoriteMovie()
+            }else{
+                viewModel.deleteFavoriteMovie()
+            }
+        }
+
     }
 
     private fun initImageSlide(){
