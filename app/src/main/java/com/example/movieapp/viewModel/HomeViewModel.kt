@@ -13,22 +13,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel
-    @Inject
-    constructor(
-        private val homeRepository: HomeRepository
-    ): ViewModel() {
+@Inject
+constructor(
+    private val homeRepository: HomeRepository
+) : ViewModel() {
 
     private val oldData = MutableLiveData<MovieResponse?>()
 
-    fun allMovies(page: Int): MutableLiveData<MovieResponse>{
+    fun allMovies(page: Int): MutableLiveData<MovieResponse> {
         val movies = MutableLiveData<MovieResponse>()
         viewModelScope.launch(Dispatchers.IO) {
             val data = homeRepository.getAllMovies(page)
-            withContext(Dispatchers.Main){
-                if(data != oldData.value){
+            withContext(Dispatchers.Main) {
+                if (data != oldData.value) {
                     movies.value = data!!
                     oldData.value = data
-                }else{
+                } else {
                     movies.value = movies.value
                 }
             }

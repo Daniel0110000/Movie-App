@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun initBottomNavigation(){
+    private fun initBottomNavigation() {
         val navController = findNavController(R.id.fragment)
         binding.bottomNavigation.setupWithNavController(navController)
     }

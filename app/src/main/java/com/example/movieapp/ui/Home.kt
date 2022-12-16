@@ -29,8 +29,6 @@ class Home : Fragment(), MovieClickListener {
     private lateinit var moviesAdapter: RecyclerMoviesAdapter
 
     private var currentPage: Int = 1
-    private var oldCurrentPage: Int = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,23 +43,20 @@ class Home : Fragment(), MovieClickListener {
 
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         moviesAdapter = RecyclerMoviesAdapter(movieList, this)
         binding.recyclerAll.apply {
             hasFixedSize()
             layoutManager = GridLayoutManager(context, 2)
             adapter = moviesAdapter
-            addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    if(!binding.recyclerAll.canScrollVertically(1)){
-                        oldCurrentPage = currentPage
-                        if(currentPage <= TOTAL_PAGES){
+                    if (!binding.recyclerAll.canScrollVertically(1)) {
+                        if (currentPage <= TOTAL_PAGES) {
                             currentPage += 1
-                            if(currentPage != oldCurrentPage){
-                                getMovies()
-                                binding.secondaryProgressBar.visibility = View.VISIBLE
-                            }
+                            getMovies()
+                            binding.secondaryProgressBar.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -70,13 +65,13 @@ class Home : Fragment(), MovieClickListener {
         getMovies()
     }
 
-    private fun getMovies(){
-        viewModel.allMovies(currentPage).observe(viewLifecycleOwner){ movies ->
+    private fun getMovies() {
+        viewModel.allMovies(currentPage).observe(viewLifecycleOwner) { movies ->
             binding.mainProgressBar.visibility = View.GONE
             binding.recyclerAll.visibility = View.VISIBLE
             binding.secondaryProgressBar.visibility = View.GONE
-            if(movies != null){
-                if(movies.tv_shows.isNotEmpty()){
+            if (movies != null) {
+                if (movies.tv_shows.isNotEmpty()) {
                     movieList.addAll(movies.tv_shows)
                     moviesAdapter.notifyDataSetChanged()
                 }

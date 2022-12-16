@@ -39,24 +39,24 @@ class Search : Fragment(), MovieClickListener {
         return binding.root
     }
 
-    private fun initRecyclerView(){
-        viewModel.searchResult.observe(viewLifecycleOwner){ movies ->
+    private fun initRecyclerView() {
+        viewModel.searchResult.observe(viewLifecycleOwner) { movies ->
             binding.recyclerSearch.hasFixedSize()
             binding.recyclerSearch.layoutManager = GridLayoutManager(context, 2)
             moviesList.clear()
-            if(movies != null){
-                if(movies.tv_shows.isNotEmpty()){
+            if (movies != null) {
+                if (movies.tv_shows.isNotEmpty()) {
                     binding.searchMovieLayout.visibility = View.GONE
                     binding.recyclerSearch.visibility = View.VISIBLE
                     binding.notFoundLayout.visibility = View.GONE
                     moviesList.addAll(movies.tv_shows)
                     binding.recyclerSearch.adapter = RecyclerMoviesAdapter(moviesList, this)
-                }else{
+                } else {
                     binding.recyclerSearch.visibility = View.GONE
                     binding.notFoundLayout.visibility = View.VISIBLE
                     binding.searchMovieLayout.visibility = View.GONE
                 }
-            }else{
+            } else {
                 binding.searchMovieLayout.visibility = View.VISIBLE
                 binding.recyclerSearch.visibility = View.GONE
                 binding.notFoundLayout.visibility = View.GONE

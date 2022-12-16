@@ -5,14 +5,14 @@ import com.example.movieapp.data.network.ApiService
 import javax.inject.Inject
 
 class SearchRepository
-    @Inject
-    constructor(
-        private val apiService: ApiService
-    ){
+@Inject
+constructor(
+    private val apiService: ApiService
+) {
 
-    suspend fun searchMovie(q: String): MovieResponse?{
+    suspend fun searchMovie(q: String): MovieResponse? {
         val call = apiService.searchMovie(q)
-        return if(call.isSuccessful) call.body() else null
+        return if (call.isSuccessful) call.body() else null
     }
 
 }

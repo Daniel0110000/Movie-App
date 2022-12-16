@@ -18,4 +18,5 @@
     <string name="status">Status: </string>
     <string name="start">Start: </string>
     <string name="show_description">Show description</string>
+    <string name="images_slide">images slide</string>
 </resources>

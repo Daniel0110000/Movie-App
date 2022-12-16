@@ -2,18 +2,14 @@ package com.example.movieapp.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.movieapp.R
 import com.example.movieapp.adapter.MovieClickListener
 import com.example.movieapp.adapter.RecyclerFavoritesAdapter
-import com.example.movieapp.adapter.RecyclerMoviesAdapter
-import com.example.movieapp.data.models.TvShow
 import com.example.movieapp.databinding.FragmentFavoritesBinding
 import com.example.movieapp.viewModel.FavoritesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,20 +35,20 @@ class Favorites : Fragment(), MovieClickListener {
 
     }
 
-    private fun initUI(){
-        viewModel.allFavoriteMovies().observe(viewLifecycleOwner){ favorites ->
-            if(favorites.isNotEmpty()){
+    private fun initUI() {
+        viewModel.allFavoriteMovies().observe(viewLifecycleOwner) { favorites ->
+            if (favorites.isNotEmpty()) {
                 binding.recyclerFavorites.visibility = View.VISIBLE
                 binding.noFavoriteMoviesLayout.visibility = View.GONE
                 initRecyclerViewFavorites(favorites)
-            }else{
+            } else {
                 binding.noFavoriteMoviesLayout.visibility = View.VISIBLE
                 binding.recyclerFavorites.visibility = View.GONE
             }
         }
     }
 
-    private fun initRecyclerViewFavorites(favoritesList: List<com.example.movieapp.data.room.Favorites>){
+    private fun initRecyclerViewFavorites(favoritesList: List<com.example.movieapp.data.room.Favorites>) {
         binding.recyclerFavorites.apply {
             hasFixedSize()
             layoutManager = GridLayoutManager(context, 2)
